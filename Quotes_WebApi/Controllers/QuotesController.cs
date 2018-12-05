@@ -13,14 +13,23 @@ namespace Quotes_WebApi.Controllers
     {
         QuotesDbContext quotesDbContext = new QuotesDbContext();
         // GET: api/Quotes
-        public IHttpActionResult Get()
+        [HttpGet]
+        public IHttpActionResult LoadQuoutes()
         {
             var quotes = quotesDbContext.Quotes;
             return Ok(quotes);
         }
 
+        //[HttpGet]
+        //[Route("api/Quotes/Test/{id}")]
+        //public int Test(int id)
+        //{
+        //    return id;
+        //}
+
         // GET: api/Quotes/5
-        public IHttpActionResult Get(int id)
+        [HttpGet]
+        public IHttpActionResult LoadQuote(int id)
         {
            var quote = quotesDbContext.Quotes.Find(id);
             if(quote == null)
@@ -31,17 +40,27 @@ namespace Quotes_WebApi.Controllers
         }
 
         // POST: api/Quotes
+        [HttpPost]
         public IHttpActionResult Post([FromBody]Quotes quote)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             quotesDbContext.Quotes.Add(quote);
             quotesDbContext.SaveChanges();
             return StatusCode(HttpStatusCode.Created);
         }
 
         // PUT: api/Quotes/5
+        [HttpPut]
         public IHttpActionResult Put(int id, [FromBody]Quotes quote)
         {
-           var entity= quotesDbContext.Quotes.FirstOrDefault(q => q.Id == id);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var entity= quotesDbContext.Quotes.FirstOrDefault(q => q.Id == id);
             if(entity == null)
             {
                 return BadRequest("No record found against this ID");
@@ -54,6 +73,7 @@ namespace Quotes_WebApi.Controllers
         }
 
         // DELETE: api/Quotes/5
+        [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             var quote = quotesDbContext.Quotes.Find(id);
