@@ -14,18 +14,24 @@ namespace Quotes_WebApi.Controllers
         QuotesDbContext quotesDbContext = new QuotesDbContext();
         // GET: api/Quotes
         [HttpGet]
-        public IHttpActionResult LoadQuoutes()
+        public IHttpActionResult LoadQuoutes(string sort)
         {
-            var quotes = quotesDbContext.Quotes;
+            IQueryable<Quotes> quotes;
+            switch(sort)
+            {
+                case "desc":
+                   quotes = quotesDbContext.Quotes.OrderByDescending(q => q.CreatedAt);
+                    break;
+                case "asc":
+                    quotes =quotesDbContext.Quotes.OrderBy(q => q.CreatedAt);
+                    break;
+                default:
+                    quotes = quotesDbContext.Quotes;
+                    break;
+            }
+            //var quotes = quotesDbContext.Quotes;
             return Ok(quotes);
         }
-
-        //[HttpGet]
-        //[Route("api/Quotes/Test/{id}")]
-        //public int Test(int id)
-        //{
-        //    return id;
-        //}
 
         // GET: api/Quotes/5
         [HttpGet]
