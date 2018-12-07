@@ -33,6 +33,21 @@ namespace Quotes_WebApi.Controllers
             return Ok(quotes);
         }
 
+        [HttpGet]
+        [Route("api/Quotes/PagingQuotes/{pageNumber=1}/{pageSize=5}")]
+        public IHttpActionResult PagingQuote(int pageNumber, int pageSize)
+        {
+            var quotes = quotesDbContext.Quotes.OrderBy(q=>q.Id);
+            return Ok(quotes.Skip((pageNumber - 1) * pageSize).Take(pageSize));
+        }
+        [HttpGet]
+        [Route("api/Quotes/SearchQuote/{type=}")]
+        public IHttpActionResult SearchQuote(string type)
+        {
+           var quotes = quotesDbContext.Quotes.Where(q => q.Type.StartsWith(type));
+            return Ok(quotes);
+        }
+
         // GET: api/Quotes/5
         [HttpGet]
         public IHttpActionResult LoadQuote(int id)
