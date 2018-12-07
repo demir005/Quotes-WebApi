@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotes_WebApi", "Quotes_WebApi\Quotes_WebApi.csproj", "{E38A67A0-B09F-4D5C-9538-FC889F7AEB21}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuotesApi-Auth", "QuotesApi\QuotesApi-Auth.csproj", "{5418CB9C-8D96-415B-8B03-3AE1DD159CE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E38A67A0-B09F-4D5C-9538-FC889F7AEB21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E38A67A0-B09F-4D5C-9538-FC889F7AEB21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E38A67A0-B09F-4D5C-9538-FC889F7AEB21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5418CB9C-8D96-415B-8B03-3AE1DD159CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5418CB9C-8D96-415B-8B03-3AE1DD159CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5418CB9C-8D96-415B-8B03-3AE1DD159CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5418CB9C-8D96-415B-8B03-3AE1DD159CE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
