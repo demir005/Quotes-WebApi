@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApi.OutputCache.V2;
 
 namespace QuotesApi.Controllers
 {
@@ -16,6 +17,7 @@ namespace QuotesApi.Controllers
         // GET: api/Quotes
         [AllowAnonymous]
         [HttpGet]
+        [CacheOutput(ClientTimeSpan =60,ServerTimeSpan =60)]
         public IHttpActionResult LoadQuoutes(string sort)
         {
             IQueryable<Quotes> quotes;
