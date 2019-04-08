@@ -1,3 +1,7 @@
+Quotes Web Api using ASP.NET Core 2.1 MVC pattern 
+
+
+
 Quotes WebAPI 
 
 
@@ -22,3 +26,4 @@ Quotes WebAPI
     "Description": "Life is more the live"
   }
 ]
+
